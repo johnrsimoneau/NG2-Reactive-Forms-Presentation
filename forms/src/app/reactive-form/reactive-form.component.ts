@@ -9,6 +9,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 export class ReactiveFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
+  
+  // ^ short hand, instead of writing:
+  // private _fb;
+  // constructor(fb: FormBuilder) {
+  //   this._fb = fb;
+  // }
 
   ngOnInit() {
   }
