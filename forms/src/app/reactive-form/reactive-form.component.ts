@@ -33,9 +33,18 @@ export class ReactiveFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(this.bookTitleMaxLength)
       ])],
-      authorFirstName: ['', Validators.required],
-      authorLastName: ['', Validators.required],
-      authorEmailAddress: ['', Validators.required],
+      authorFirstName: ['', Validators.compose([
+        Validators.required,
+        this.alphaOnlyValidator
+      ])],
+      authorLastName: ['', Validators.compose([
+        Validators.required,
+        this.alphaOnlyValidator
+      ])],
+      authorEmailAddress: ['', Validators.compose([
+        Validators.required,
+        this.emailValidator
+      ])],
       genre: ['', Validators.required],
       bookRead: [false]
     });
@@ -45,6 +54,18 @@ export class ReactiveFormComponent implements OnInit {
     this.authorEmailAddress = this.bookForm.controls['authorEmailAddress'];
     this.genre = this.bookForm.controls['genre'];
     this.bookRead = this.bookForm.controls['bookRead'];
+  }
+
+  emailValidator(control: FormControl): { [s: string]: boolean } {
+    if (!control.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        return { invalidEmail: true };
+    }
+  }
+
+  alphaOnlyValidator(control: FormControl): {[s: string]: boolean} {
+    if (control.value.match(/\d+/g)) {
+      return { containsNumbers: true };
+    }
   }
 
 }
