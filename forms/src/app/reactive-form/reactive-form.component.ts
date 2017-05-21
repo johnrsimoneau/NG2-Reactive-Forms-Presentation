@@ -8,9 +8,40 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 })
 export class ReactiveFormComponent implements OnInit {
 
+  // Form & form fields vars
+  bookForm: FormGroup;
+  
+  bookTitle: AbstractControl;
+  authorFirstName: AbstractControl;
+  authorLastName: AbstractControl;
+  authorEmailAddress: AbstractControl;
+  genre: AbstractControl;
+  bookRead: AbstractControl;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.bookForm = this.fb.group({
+      bookTitle: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(10)
+      ])],
+      authorFirstName: ['', Validators.required],
+      authorLastName: ['', Validators.required],
+      authorEmailAddress: ['', Validators.required],
+      genre: ['', Validators.required],
+      bookRead: [true]
+    });
+    this.bookTitle = this.bookForm.controls['bookTitle'];
+    this.authorFirstName = this.bookForm.controls['authorFirstName'];
+    this.authorLastName = this.bookForm.controls['authorLastName'];
+    this.authorEmailAddress = this.bookForm.controls['authorEmailAddress'];
+    this.genre = this.bookForm.controls['genre'];
+    this.bookRead = this.bookForm.controls['bookRead'];
   }
 
 }

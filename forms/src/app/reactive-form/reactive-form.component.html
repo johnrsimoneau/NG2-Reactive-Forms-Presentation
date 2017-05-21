@@ -1,4 +1,4 @@
-  <form novalidate>
+  <form novalidate [formGroup]="bookForm">
     <div class="row">
     <div class="col-sm-5">
       <div class="form-group">
@@ -7,7 +7,8 @@
           id="title" 
           class="form-control" 
           placeholder="Book Title"
-          required>
+          required
+          [formControl]="bookTitle">
       </div>
     </div>
     </div>
@@ -20,7 +21,8 @@
               id="author-first-name" 
               class="form-control" 
               placeholder="Author First Name"
-              required>
+              required
+              [formControl]="authorFirstName">
           </div>
       </div>
 
@@ -31,7 +33,8 @@
               id="author-last-name" 
               class="form-control" 
               placeholder="Author Last Name"
-              required>
+              required
+              [formControl]="authorLastName">
           </div>
       </div>
 
@@ -42,7 +45,8 @@
               id="author-email-address" 
               class="form-control" 
               placeholder="Author Email"
-              required>
+              required
+              [formControl]="authorEmailAddress">
           </div>
       </div>
 
@@ -52,7 +56,8 @@
           id="genre" 
           class="form-control" 
           placeholder="Genre"
-          required>
+          required
+          [formControl]="genre">
       </div>
 
     </div>
@@ -61,7 +66,7 @@
       <div class="col-sm-12">
         <div class="checkbox">
           <label><input type="checkbox" 
-            value="true">Read</label>
+            value="true" [formControl]="bookRead">Read</label>
         </div>
       </div>
     </div>
@@ -75,3 +80,9 @@
     </div>
 
   </form>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <code>{{ bookForm.value | json }}</code>
+    </div>
+  </div>
