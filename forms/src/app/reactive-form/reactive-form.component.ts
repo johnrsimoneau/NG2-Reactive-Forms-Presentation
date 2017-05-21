@@ -18,6 +18,9 @@ export class ReactiveFormComponent implements OnInit {
   genre: AbstractControl;
   bookRead: AbstractControl;
 
+  // Validation vars
+  bookTitleMaxLength: number = 10;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -28,13 +31,13 @@ export class ReactiveFormComponent implements OnInit {
     this.bookForm = this.fb.group({
       bookTitle: ['', Validators.compose([
         Validators.required,
-        Validators.maxLength(10)
+        Validators.maxLength(this.bookTitleMaxLength)
       ])],
       authorFirstName: ['', Validators.required],
       authorLastName: ['', Validators.required],
       authorEmailAddress: ['', Validators.required],
       genre: ['', Validators.required],
-      bookRead: [true]
+      bookRead: [false]
     });
     this.bookTitle = this.bookForm.controls['bookTitle'];
     this.authorFirstName = this.bookForm.controls['authorFirstName'];

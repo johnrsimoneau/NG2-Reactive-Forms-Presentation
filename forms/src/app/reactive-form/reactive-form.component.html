@@ -1,19 +1,33 @@
   <form novalidate [formGroup]="bookForm">
     <div class="row">
-    <div class="col-sm-5">
-      <div class="form-group">
-        <label class="control-label" for="title">Book Title</label>
-        <input type="text" 
-          id="title" 
-          class="form-control" 
-          placeholder="Book Title"
-          required
-          [formControl]="bookTitle">
-      </div>
-    </div>
-    </div>
-    <div class="row">
       
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label class="control-label" for="title">Book Title</label>
+          <input type="text" 
+            id="title" 
+            class="form-control" 
+            placeholder="Book Title"
+            required
+            [formControl]="bookTitle">
+        </div>
+      </div>
+
+      <div class="col-sm-12" *ngIf="bookTitle.hasError('required') && bookTitle.touched">
+          <div class="alert alert-danger text-danger">
+          Field is required.
+          </div>
+      </div>
+
+      <div class="col-sm-12" *ngIf="bookTitle.hasError('maxlength') && bookTitle.touched">
+          <div class="alert alert-danger text-danger">
+          Book Title Must be less than {{ bookTitleMaxLength }} characters.
+          </div>
+      </div>
+    
+    </div>
+
+    <div class="row">
       <div class="col-sm-5">
         <div class="form-group">
             <label class="control-label" for="author-first-name">Author First Name</label>
@@ -38,7 +52,17 @@
           </div>
       </div>
 
-      <div class="col-sm-5">
+      <div class="col-sm-10" *ngIf="(!authorFirstName.valid || !authorLastName.valid) && 
+                                    (authorFirstName.touched && authorLastName.touched)">
+        <div class="alert alert-danger text-danger">
+        Enter a valid Author Name.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
         <div class="form-group">
             <label class="control-label" for="author-email-address">Author Email</label>
             <input type="email" 
@@ -50,14 +74,31 @@
           </div>
       </div>
 
+      <div class="col-sm-10" *ngIf="!authorEmailAddress.valid && authorEmailAddress.touched">
+        <div class="alert alert-danger text-danger">
+        Enter a valid Email Address.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
       <div class="col-sm-5">
-        <label class="control-label" for="genre">Genre</label>
-        <input type="text" 
-          id="genre" 
-          class="form-control" 
-          placeholder="Genre"
-          required
-          [formControl]="genre">
+        <div class="form-group">
+          <label class="control-label" for="genre">Genre</label>
+          <input type="text" 
+            id="genre" 
+            class="form-control" 
+            placeholder="Genre"
+            required
+            [formControl]="genre">
+          </div>
+      </div>
+
+      <div class="col-sm-10" *ngIf="!genre.valid && genre.touched">
+        <div class="alert alert-danger text-danger">
+        Field is required.
+        </div>
       </div>
 
     </div>
