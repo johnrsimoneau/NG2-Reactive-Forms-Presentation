@@ -9,6 +9,12 @@
   "author": "John Simoneau",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongo": "^0.1.0",
+    "mongod": "^2.0.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.3",
+    "nodemon": "^1.12.1"
   }
 }
