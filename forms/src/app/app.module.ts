@@ -7,14 +7,14 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { AuthorComponent } from './components/author/author.component';
+import { AuthorViewAllComponent } from './components/author/author.view.all.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ReactiveFormComponent,
-    AuthorComponent
+    AuthorViewAllComponent
   ],
   imports: [
     BrowserModule,

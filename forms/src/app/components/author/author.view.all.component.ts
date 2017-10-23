@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-author',
-  templateUrl: './author.component.html',
-  styleUrls: ['./author.component.css']
+  templateUrl: './author.view.all.component.html'
 })
-export class AuthorComponent implements OnInit {
+export class AuthorViewAllComponent implements OnInit {
 
   constructor() { }
 

@@ -1,66 +1,49 @@
+<div class="col-sm-12">
   <form novalidate [formGroup]="bookForm">
     <div class="row">
-      
+
       <div class="col-sm-5">
-        <div class="form-group"
-        [class.has-error]="!bookTitle.valid && bookTitle.touched">
+        <div class="form-group" [class.has-error]="!bookTitle.valid && bookTitle.touched">
           <label class="control-label" for="title">Book Title</label>
-          <input type="text" 
-            id="title" 
-            class="form-control" 
-            placeholder="Book Title"
-            required
-            [formControl]="bookTitle">
+          <input type="text" id="title" class="form-control" placeholder="Book Title" required [formControl]="bookTitle">
         </div>
       </div>
 
       <div class="col-sm-12" *ngIf="bookTitle.hasError('required') && bookTitle.touched">
-          <div class="alert alert-danger text-danger">
+        <div class="alert alert-danger text-danger">
           Field is required.
-          </div>
+        </div>
       </div>
 
       <div class="col-sm-12" *ngIf="bookTitle.hasError('maxlength') && bookTitle.touched">
-          <div class="alert alert-danger text-danger">
+        <div class="alert alert-danger text-danger">
           Book Title Must be less than {{ bookTitleMaxLength }} characters.
-          </div>
+        </div>
       </div>
-    
+
     </div>
 
     <div class="row">
       <div class="col-sm-5">
-        <div class="form-group"
-          [class.has-error]="(!authorFirstName.valid || !authorLastName.valid) && 
+        <div class="form-group" [class.has-error]="(!authorFirstName.valid || !authorLastName.valid) && 
             (authorFirstName.touched && authorLastName.touched)">
-            <label class="control-label" for="author-first-name">Author First Name</label>
-            <input type="text" 
-              id="author-first-name" 
-              class="form-control" 
-              placeholder="Author First Name"
-              required
-              [formControl]="authorFirstName">
-          </div>
+          <label class="control-label" for="author-first-name">Author First Name</label>
+          <input type="text" id="author-first-name" class="form-control" placeholder="Author First Name" required [formControl]="authorFirstName">
+        </div>
       </div>
 
       <div class="col-sm-5">
-        <div class="form-group"
-          [class.has-error]="(!authorFirstName.valid || !authorLastName.valid) && 
+        <div class="form-group" [class.has-error]="(!authorFirstName.valid || !authorLastName.valid) && 
             (authorFirstName.touched && authorLastName.touched)">
-            <label class="control-label" for="author-last-name">Author Last Name</label>
-            <input type="text" 
-              id="author-last-name" 
-              class="form-control" 
-              placeholder="Author Last Name"
-              required
-              [formControl]="authorLastName">
-          </div>
+          <label class="control-label" for="author-last-name">Author Last Name</label>
+          <input type="text" id="author-last-name" class="form-control" placeholder="Author Last Name" required [formControl]="authorLastName">
+        </div>
       </div>
 
       <div class="col-sm-10" *ngIf="(!authorFirstName.valid || !authorLastName.valid) && 
                                     (authorFirstName.touched && authorLastName.touched)">
         <div class="alert alert-danger text-danger">
-        Enter a valid Author Name.
+          Enter a valid Author Name.
         </div>
       </div>
 
@@ -68,27 +51,21 @@
 
     <div class="row">
       <div class="col-sm-8">
-        <div class="form-group"
-        [class.has-error]="!authorEmailAddress.valid && authorEmailAddress.touched">
-            <label class="control-label" for="author-email-address">Author Email</label>
-            <input type="email" 
-              id="author-email-address" 
-              class="form-control" 
-              placeholder="Author Email"
-              required
-              [formControl]="authorEmailAddress">
-          </div>
+        <div class="form-group" [class.has-error]="!authorEmailAddress.valid && authorEmailAddress.touched">
+          <label class="control-label" for="author-email-address">Author Email</label>
+          <input type="email" id="author-email-address" class="form-control" placeholder="Author Email" required [formControl]="authorEmailAddress">
+        </div>
       </div>
 
       <div class="col-sm-10" *ngIf="authorEmailAddress.hasError('required') && authorEmailAddress.touched">
         <div class="alert alert-danger text-danger">
-        This field is required.
+          This field is required.
         </div>
       </div>
 
       <div class="col-sm-10" *ngIf="!authorEmailAddress.hasError('required') && authorEmailAddress.hasError('invalidEmail') && authorEmailAddress.touched">
         <div class="alert alert-danger text-danger">
-        Enter a valid email address.
+          Enter a valid email address.
         </div>
       </div>
 
@@ -96,21 +73,15 @@
 
     <div class="row">
       <div class="col-sm-5">
-        <div class="form-group"
-        [class.has-error]="!genre.valid && genre.touched">
+        <div class="form-group" [class.has-error]="!genre.valid && genre.touched">
           <label class="control-label" for="genre">Genre</label>
-          <input type="text" 
-            id="genre" 
-            class="form-control" 
-            placeholder="Genre"
-            required
-            [formControl]="genre">
-          </div>
+          <input type="text" id="genre" class="form-control" placeholder="Genre" required [formControl]="genre">
+        </div>
       </div>
 
       <div class="col-sm-10" *ngIf="!genre.valid && genre.touched">
         <div class="alert alert-danger text-danger">
-        Field is required.
+          Field is required.
         </div>
       </div>
 
@@ -119,8 +90,8 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="checkbox">
-          <label><input type="checkbox" 
-            value="true" [formControl]="bookRead">Read</label>
+          <label>
+            <input type="checkbox" value="true" [formControl]="bookRead">Read</label>
         </div>
       </div>
     </div>
@@ -128,13 +99,8 @@
     <div class="row">
       <div class="col-sm-12">
         <br>
-        <input type="submit" 
-          value="Submit" 
-          class="btn btn-primary btn-lg"
-          [disabled]="!bookForm.valid">
-        <button type="button" 
-          class="btn btn-default btn-lg"
-          (click)="initializeForm()">Clear</button>
+        <input type="submit" value="Submit" class="btn btn-primary btn-lg" [disabled]="!bookForm.valid">
+        <button type="button" class="btn btn-default btn-lg" (click)="initializeForm()">Clear</button>
       </div>
     </div>
 
@@ -145,3 +111,4 @@
       <code>{{ bookForm.value | json }}</code>
     </div>
   </div>
+</div>
